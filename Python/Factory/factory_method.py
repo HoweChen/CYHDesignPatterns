@@ -2,10 +2,10 @@ import xml.etree.ElementTree as etree
 import json
 
 
-class JSONConnector(object):
+class JSONConnector():
     def __init__(self, filepath):
         self._data = dict()
-        with open(filepath, mode=r, encoding="utf-8") as f:
+        with open(filepath, mode="r", encoding="utf-8") as f:
             self._data = json.load(f)
 
     @property
@@ -13,7 +13,7 @@ class JSONConnector(object):
         return self._data
 
 
-class XMLConnecter(object):
+class XMLConnecter():
     def __init__(self, filepath):
         self._tree = etree.parse(filepath)
 

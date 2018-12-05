@@ -1,4 +1,4 @@
-class Frog(object):
+class Frog():
     def __init__(self, name):
         self.name = name
 
@@ -9,7 +9,7 @@ class Frog(object):
         print(f"{self} the Frog encounters {obstacle} and {obstacle.action()}")
 
 
-class Bug(object):
+class Bug():
     def __str__(self):
         return f"a bug"
 
@@ -17,7 +17,7 @@ class Bug(object):
         return f"eats it"
 
 
-class FrogWorld(object):
+class FrogWorld():
     def __init__(self, name):
         print(self)
         self.player_name = name
@@ -40,10 +40,11 @@ class Wizard(object):
         return self.name
 
     def interact_with(self, obstacle):
-        print(f"{self} the Wizard encounters {obstacle} and {obstacle.action()}")
+        print(f"{self} the Wizard encounters {obstacle} and {obstacle.action()}"
+              )
 
 
-class Ork(object):
+class Ork():
     def __str__(self):
         return f"an ork"
 
@@ -51,7 +52,7 @@ class Ork(object):
         return f"beats it"
 
 
-class WizardWorld(object):
+class WizardWorld():
     def __init__(self, name):
         print(self)
         self.player_name = name
@@ -66,7 +67,7 @@ class WizardWorld(object):
         return Ork()
 
 
-class GameEnvironment(object):
+class GameEnvironment():
     def __init__(self, factory):
         self.hero = factory.make_character()
         self.obstacle = factory.make_obstacle()
@@ -82,6 +83,6 @@ def validate_age(age):
 if __name__ == "__main__":
     age = input("What is your age?")
     name = input("What is your name?")
-    game = FrogWorld if not validate_age(age) else WizardWord
+    game = FrogWorld if not validate_age(age) else WizardWorld
     environment = GameEnvironment(game(name))
     environment.play()
