@@ -47,10 +47,13 @@ def main():
     prototype.register(cid, b1)
     b2 = prototype.clone(cid, name="The C programming Language(ANSI)",
                          price=48.99, length=274, publication_date='1988-04-01', edition=2)
+    cid2 = 'k&r-second'
+    prototype.register(cid2, b2)
 
     for i in (b1, b2):
         print(i)
     print(f'ID b1: {id(b1)}!= ID b2: {id(b2)}')
+    print(prototype.objects)
 
 
 if __name__ == "__main__":
