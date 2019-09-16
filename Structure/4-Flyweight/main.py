@@ -1,5 +1,6 @@
 import random
 from enum import Enum
+from collections import defaultdict
 
 TreeType = Enum('TreeType', 'apple_tree cherry_tree peach_tree')
 
@@ -18,6 +19,21 @@ class Tree:
     def render(self, age, x, y):
         print(
             f'render a tree of type {self.tree_type} and age {age} at({x}, {y})')
+        TreeMap.update_map(tree_type=self.tree_type, coordinate=(x, y))
+
+
+class TreeMap:
+    # record the map coordination
+    treemap = defaultdict(list)
+
+    @classmethod
+    def update_map(cls, tree_type, coordinate):
+        cls.treemap[tree_type].append(coordinate)
+
+    @classmethod
+    def overview(cls):
+        for tree_type, coordinate in cls.treemap.items():
+            print(tree_type, coordinate)
 
 
 def main():
@@ -45,6 +61,7 @@ def main():
 
     print(f'trees rendered: {tree_counter}')
     print(f'trees actually created: {len(Tree.pool)}')
+    print(TreeMap.overview())
 
     t4 = Tree(TreeType.cherry_tree)
     t5 = Tree(TreeType.cherry_tree)
